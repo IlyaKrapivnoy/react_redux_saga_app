@@ -19,6 +19,7 @@ export default class PostForm extends React.Component {
         }
         console.log(newPost)
         this.setState({title: ''}) // очищает инпут по клику на btn Create
+        
     }
     changeInputHandler = event => [
         event.persist(),

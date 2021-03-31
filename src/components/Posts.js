@@ -3,5 +3,8 @@ import Post from './Post'
 
 
 export default ({ posts }) => {
-    return posts.map(post => <Post post={post} id={post} />)
+    if(!posts.length) {
+        return <p className="text-center">No Posts Found</p>
+    }
+    return posts.map(post => <Post post={post} key={post} />)
 }

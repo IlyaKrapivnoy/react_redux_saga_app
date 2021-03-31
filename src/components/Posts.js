@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Post from './Post'
 
-
 const Posts = ({ syncPosts }) => {
     if(!syncPosts.length) {
         return <p className="text-center">No Posts Found</p>

@@ -19,16 +19,22 @@ export function hideLoader() {
     }
 }
 
-export function showAlert(text) {
-    return {
-        type: SHOW_ALERT,
-        payload: text
-    }
-}
-
 export function hideAlert(text) {
     return {
         type: HIDE_ALERT
+    }
+}
+
+export function showAlert(text) {
+    return dispatch => {
+        dispatch({
+            type: SHOW_ALERT,
+            payload: text
+        })
+
+        setTimeout(() => {
+            dispatch(hideAlert())
+        }, 3000)
     }
 }
 

@@ -40,13 +40,18 @@ export function showAlert(text) {
 
 export function fetchPosts() {
     return async dispatch => {
-        dispatch(showLoader())
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-        const json = await response.json()
-        setTimeout(() => {
-            dispatch({ type: FETCH_POSTS, payload: json })
+        try {
+            dispatch(showLoader())
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+            const json = await response.json()
+            setTimeout(() => {
+                dispatch({ type: FETCH_POSTS, payload: json })
+                dispatch(hideLoader())
+            }, 500)
+        } catch (e) {
+            dispatch(showAlert('Something went wrong'))
             dispatch(hideLoader())
-        }, 500)
+        }
         
     }
 }
